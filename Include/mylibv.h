@@ -83,13 +83,12 @@ public:
     float vidurk();
     float median();
     void generate(int nd_kiek, int i);
-    void read(std::ifstream &open_f, vector<studentas> &grupe);  // set'eriai
+    void read(std::ifstream &open_f, vector<studentas> &grupe);
     void spausd(char pas2, char pas3, std::ofstream &out_f);
     void failai(int nd_kiekis, int i, std::ofstream& out_f);
     void isrinkimas1(vector<studentas> grupe, vector<studentas> &Nel, vector<studentas> &Kiet);
     void isrinkimas2(vector<studentas>& grupe, vector<studentas>& Nel);
-    void clearpaz() { paz.clear(); }
 
-    ~studentas() { clearpaz(); }
+    ~studentas() { vardas.clear(); pavarde.clear(); paz.clear(); }
 };
-bool compare(const studentas&, const studentas&);
+bool compare(const studentas&, const studentas&); //pagal vidurkius
