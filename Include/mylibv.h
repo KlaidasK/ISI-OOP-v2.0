@@ -45,7 +45,7 @@ public:
     studentas() { 
         this->vardas = "";
         this->pavarde = "";
-        this->paz = {0};
+        this->paz = {};
         this->egz = 0;
         this->vid = 0;
         this->med = 0;
@@ -59,6 +59,71 @@ public:
         vid = vidurk();
         med = median();
     }
+
+    //copy
+    studentas(const studentas& other) {
+        this->vardas = other.vardas;
+        this->pavarde = other.pavarde;
+        this->paz = other.paz;
+        this->egz = other.egz;
+        this->vid = other.vid;
+        this->med = other.med;
+    }
+
+    // copy assignment
+    studentas& operator=(const studentas& rhs) {
+        // self-asignment check
+        if (this != &rhs) {
+
+            this->vardas = rhs.vardas;
+            this->pavarde = rhs.pavarde;
+            this->egz = rhs.egz;
+
+            this->paz = rhs.paz;
+            this->vid = rhs.vid;
+            this->med = rhs.med;
+        }
+
+        return *this;
+    }
+
+    // move constructor
+    studentas(studentas&& other) {
+        this->vardas = std::move(other.vardas);
+        this->pavarde = std::move(other.pavarde);
+        this->paz = std::move(other.paz);
+        this->egz = std::move(other.egz);
+        this->vid = other.vid;
+        this->med = other.med;
+        other.vardas.clear();
+        other.pavarde.clear();
+        other.paz.clear();
+    }
+
+    // move assignment
+    studentas& operator=(studentas&& rhs) {
+        // self-asignment check
+        if (this != &rhs) {
+            this->egz = rhs.egz;
+            if (!this->paz.empty()) this->paz.clear();
+            if (!this->vardas.empty()) this->vardas.clear();
+            if (!this->pavarde.empty()) this->pavarde.clear();
+
+            this->vardas = rhs.vardas;
+            this->pavarde = rhs.pavarde;
+            this->paz = std::move(rhs.paz);
+            this->vid = rhs.vid;
+            this->med = rhs.med;
+            rhs.vardas.clear();
+            rhs.pavarde.clear();
+            rhs.paz.clear();
+        }
+
+        return *this;
+    }
+
+    
+
     //Egzamino pazymys
     inline int getegz() const { return egz; }
     inline void setegz(int _value) { this->egz = _value; }
@@ -68,27 +133,33 @@ public:
     //Mediana
     inline float getmed() const { return med; }
     inline void setmed(float _value) { this->med = _value; }
-
+    //vardas
     inline std::string getvardas() const { return vardas; }    // get'eriai, inline
     inline void setvardas(string _value) { this->vardas = _value; }
-
+    //pavarde
     inline std::string getpavarde() const { return pavarde; }  // get'eriai, inline
     inline void setpavarde(string _value) { this->pavarde = _value; }
-
+    //ND pazymiai
     inline std::vector<int> getpaz() const { return paz; }  // get'eriai, inline
     inline void setpaz(int pazymys) { paz.push_back(pazymys); }
     inline void pazresize(int sz) { paz.resize(sz); }
 
-    void pild();
+    //Gal balo skaiciavimas
     float vidurk();
     float median();
-    void generate(int nd_kiek, int i);
-    void read(std::ifstream &open_f, vector<studentas> &grupe);
-    void spausd(char pas2, char pas3, std::ofstream &out_f);
-    void failai(int nd_kiekis, int i, std::ofstream& out_f);
-    void isrinkimas1(vector<studentas> grupe, vector<studentas> &Nel, vector<studentas> &Kiet);
-    void isrinkimas2(vector<studentas>& grupe, vector<studentas>& Nel);
+ 
+    
+    //Operatoriai cout ir cin
+    friend std::ostream& operator<<(std::ostream& os, const studentas& dt);
+    friend std::istream& operator>>(std::istream& is, studentas& dt);
 
-    ~studentas() { vardas.clear(); pavarde.clear(); paz.clear(); }
+   ~studentas() { vardas.clear(); pavarde.clear(); paz.clear();}
 };
+
 bool compare(const studentas&, const studentas&); //pagal vidurkius
+void generate(int nd_kiek, int i, studentas &temp);
+void spausd(char pas2, char pas3, std::ofstream& out_f, studentas temp);
+void read(std::ifstream& open_f, vector<studentas>& grupe);
+void failai(int nd_kiekis, int i, std::ofstream& out_f);
+void isrinkimas1(vector<studentas> grupe, vector<studentas>& Nel, vector<studentas>& Kiet);
+void isrinkimas2(vector<studentas>& grupe, vector<studentas>& Nel);
