@@ -1,5 +1,6 @@
 # ISI-OOP-v2.0
 Objektinis programavimas
+Subversija v1.1
 Šia visur namų įrašų kiekis = 10
 
 Naudojimas Išrinkimas2
