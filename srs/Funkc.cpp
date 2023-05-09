@@ -89,8 +89,8 @@ float studentas::median() //Medianos skaičiavimas
 {
 	vector<int> vectkopija;
 	typedef vector<int>::size_type vec_sz;
-	vectkopija = paz;
-	vectkopija.push_back(egz);
+	vectkopija = getpaz();
+	vectkopija.push_back(getegz());
 	vec_sz size = vectkopija.size();
 	sort(vectkopija.begin(), vectkopija.end());
 	vec_sz mid = size / 2;
@@ -180,4 +180,9 @@ std::istream& operator>>(std::istream& is, studentas& dt) {
 	cout << "Duomenys irasyti" << endl;
 
 	return is;
+}
+
+zmogus::~zmogus() // Explicit destructor call
+{
+	vardas.clear(); pavarde.clear();
 }
