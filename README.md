@@ -1,7 +1,7 @@
 # ISI-OOP-v2.0
 Objektinis programavimas
 
-v1.1
+#v1.1
 
 Šia visur namų įrašų kiekis = 10
 
@@ -42,9 +42,11 @@ exe file = 72kb
 | 1000000  | 3.38977 s | 0.49436 s | 0.179654 s | 0.624162 s | 0.631099 s | 5.36461 s | 
 | 10000000 | 35.2378 s | 5.55286 s | 2.02839 s | 6.45076 s | 6.40993 s  | 56.1671 s | 
 
-v1.2
+#v1.2
 
-v1.5
+Realizuota "Rule of five" su cout ir cin operatoriais klasėje studentas.
+
+#v1.5
 
 Vietoje vienos studentas klasės naudojamos dvi klasės: bazinė zmogus ir iš jos išvestinė (derived) studentas.
 Bazinė klasė zmogus yra abstrakčioji, negalima sukurti zmogus objektų.
