@@ -31,29 +31,38 @@ using std::istringstream;
 using std::istringstream;
 using std::runtime_error;
 
-class studentas {
-
-private:
-
+class zmogus {
+protected:
     string vardas, pavarde;
+    zmogus(string var, string pav) {
+        vardas = var;
+        pavarde = pav;
+    }
+    zmogus() {
+        vardas = "";
+        pavarde = "";
+    }
+    virtual ~zmogus() = 0;
+};
+
+class studentas: public zmogus
+{
+private:
     vector<int> paz;
     int egz;
     float vid, med;
 
 public:
     //Default konst'ius
-    studentas() { 
-        this->vardas = "";
-        this->pavarde = "";
+    studentas() : zmogus() {
         this->paz = {};
         this->egz = 0;
         this->vid = 0;
         this->med = 0;
     }
 
-    studentas(string v, string p, vector<int> g, int e) {
-        this->vardas = v;
-        this->pavarde = p;
+    studentas(string v, string p, vector<int> g, int e) : zmogus(v,p)
+    {
         this->paz = g;
         this->egz = e;
         vid = vidurk();
@@ -61,9 +70,8 @@ public:
     }
 
     //copy
-    studentas(const studentas& other) {
-        this->vardas = other.vardas;
-        this->pavarde = other.pavarde;
+    studentas(const studentas& other) : zmogus(other.vardas,other.pavarde)
+    {
         this->paz = other.paz;
         this->egz = other.egz;
         this->vid = other.vid;
@@ -71,10 +79,10 @@ public:
     }
 
     // copy assignment
-    studentas& operator=(const studentas& rhs) {
+    studentas& operator=(const studentas& rhs) 
+    {
         // self-asignment check
         if (this != &rhs) {
-
             this->vardas = rhs.vardas;
             this->pavarde = rhs.pavarde;
             this->egz = rhs.egz;
@@ -89,34 +97,41 @@ public:
 
     // move constructor
     studentas(studentas&& other) {
-        this->vardas = std::move(other.vardas);
-        this->pavarde = std::move(other.pavarde);
-        this->paz = std::move(other.paz);
-        this->egz = std::move(other.egz);
-        this->vid = other.vid;
-        this->med = other.med;
+        vardas = other.vardas;
+        pavarde = other.pavarde;
+        paz = other.paz;
+        egz = other.egz;
+        vid = other.vid;
+        med = other.med;
         other.vardas.clear();
         other.pavarde.clear();
         other.paz.clear();
+        other.egz = 0;
+        other.vid = 0;
+        other.med = 0;
     }
 
     // move assignment
-    studentas& operator=(studentas&& rhs) {
+    studentas& operator=(studentas&& other) {
         // self-asignment check
-        if (this != &rhs) {
-            this->egz = rhs.egz;
-            if (!this->paz.empty()) this->paz.clear();
-            if (!this->vardas.empty()) this->vardas.clear();
-            if (!this->pavarde.empty()) this->pavarde.clear();
+        if (this != &other) {
+            
+            if (!this->paz.empty()) paz.clear();
+            if (!this->vardas.empty()) vardas.clear();
+            if (!this->pavarde.empty()) pavarde.clear();
 
-            this->vardas = rhs.vardas;
-            this->pavarde = rhs.pavarde;
-            this->paz = std::move(rhs.paz);
-            this->vid = rhs.vid;
-            this->med = rhs.med;
-            rhs.vardas.clear();
-            rhs.pavarde.clear();
-            rhs.paz.clear();
+            egz = other.egz;
+            vardas = other.vardas;
+            pavarde = other.pavarde;
+            paz = other.paz;
+            vid = other.vid;
+            med = other.med;
+            other.vardas.clear();
+            other.pavarde.clear();
+            other.paz.clear();
+            other.egz = 0;
+            other.vid = 0;
+            other.med = 0;
         }
 
         return *this;
@@ -153,7 +168,8 @@ public:
     friend std::ostream& operator<<(std::ostream& os, const studentas& dt);
     friend std::istream& operator>>(std::istream& is, studentas& dt);
 
-   ~studentas() { vardas.clear(); pavarde.clear(); paz.clear();}
+    
+    ~studentas() { paz.clear(); egz = 0; vid = 0; med = 0; }
 };
 
 bool compare(const studentas&, const studentas&); //pagal vidurkius
