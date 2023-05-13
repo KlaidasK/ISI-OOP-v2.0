@@ -1,5 +1,0 @@
-cmake_minimum_required(VERSION 3.25)
-project(Vect)
-include_directories(include)
-file(GLOB SOURCES "srs/*.cpp")
-add_executable(Vect ${SOURCES})
