@@ -75,5 +75,6 @@ Instrukcija:
   8. Pasirinkus 4 reikia pasirinkti strategija failo dalijimo tarp Nelaimėlių ir Kietekų.
   9. Rezultatams išvedus galime toliau tęsti programą.
   10. Visi išvesti tekstiniai failai bus tame pačiame folderį kur AppWithDLL.exe.
+Dokumentacija: 
 
 
