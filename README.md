@@ -51,3 +51,29 @@ Realizuota "Rule of five" su cout ir cin operatoriais klasėje studentas.
 Vietoje vienos studentas klasės naudojamos dvi klasės: bazinė zmogus ir iš jos išvestinė (derived) studentas.
 Bazinė klasė zmogus yra abstrakčioji, negalima sukurti zmogus objektų.
 
+# v2.0
+
+Sukurtas automatinis įdiegimo failas programai ir atliktas unit testavimas funkcijom.
+
+Įdiegimo instrukcija:
+1. Paleisti setup.exe ar setup.msi.
+2. Papsausti next.
+3. Pasirinkti kur bus įdiegta programa.
+4. Pasirinkti kam bus įdiegta (ar tik dabartiniam vartotojui ar visiems vartotjams kompiuteryje).
+5. Paspausti next.
+6. Palaukti kol įdiegs programą.
+7. Paspausti finish.
+
+Instrukcija:
+
+  1. Programa rasite pasirinktam įideigimo folderį.
+  2. Paleisti porgrama paspauskite AppWithDLL.exe.
+  3. Pasirinkti tarp 4 pasirinkimų (1 - savarankiško duomenų įvedimo, 2 - atsitiktinio generavimo, 3- duomenų nuskaitymo iš failo, 4 - failų generavimo iš esamo failo      ar naujai sukurto).
+  5. Pasirinkus 1, reikia pačiam įvesti studento duomenis (vardą, pavardę, pažymius), taip pat pasirinkimas tarp išvedimo tarp pažymių medianos ir vidurkio.
+  6. Pasirinkus 2 reikia įvesti kiek studentu generuos ir kiek maksimalus namų darbų pažymių skaičius.
+  7. Pasirinkus 3 reikia įvesti tekstinio failo pavadinamą, kuris turi būti tam pačiame folderį, kur AppWithDLL.exe.
+  8. Pasirinkus 4 reikia pasirinkti strategija failo dalijimo tarp Nelaimėlių ir Kietekų.
+  9. Rezultatams išvedus galime toliau tęsti programą.
+  10. Visi išvesti tekstiniai failai bus tame pačiame folderį kur AppWithDLL.exe.
+
+
